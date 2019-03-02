@@ -1,0 +1,17 @@
+
+body {
+  padding-top: 5rem;
+}
+.center-div{
+	margin: 0 auto;
+	width: 500px;
+}
+.button{
+  align: center;
+}
+.content{
+  align: center;
+}
+.patient_info{
+  align: center;
+}

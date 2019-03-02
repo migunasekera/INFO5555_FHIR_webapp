@@ -1,0 +1,132 @@
+<!doctype html>
+
+<html lan="en">
+
+  <head>
+
+    <meta chat="utf-8">
+    <script src="js/config.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+  </head>
+
+  <body> <!-- onload = checkCookie() -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="js/fhir-client.js"></script>
+    <script src="js/app.js"></script>
+    <link href="index.css" rel="stylesheet">
+
+      <center>
+        <p>
+        <h1> Alcohol addition FHIR app </h1>
+      </center>
+
+    <div class="center-div"> <!-- Input fields-->
+        <p>
+            Patient's first name:
+            <input type="text" id="fname" value="Carl">
+        </p>
+        <p>
+            Patient's last name:
+            <input type="text" id="lname" value="Lee">
+        </p>
+    </div>
+
+    <div class="d-flex justify-content-center" id = "button"> <!-- Button-->
+        <input onclick='getGraphs();' type = 'button' value = 'Get Information'/>
+    </div>
+
+    <div class="center-div" id = "patient_info"> <!-- Patient information-->
+    </div>
+
+    <div class = "row"> <!-- Graphs-->
+      <div id ="plot1" class = "col-md-6 col-lg-6">
+      </div>
+      <div id ="plot2" class = "col-md-6 col-lg-6">
+      </div>
+    </div>
+
+    <div class = "row">
+      <div id ="plot3" class = "col-md-6 col-lg-6">
+      </div>
+      <div id ="plot4" class = "col-md-6 col-lg-6">
+      </div>
+    </div>
+
+
+    </div>
+
+
+  </body>
+</html>
+
+<!--
+<style>
+.dropbtn:hover, .dropbtn:focus {
+background-color: #2980B9;
+}
+
+.dropdown {
+position: relative;
+display: inline-block;
+}
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f1f1f1;
+min-width: 160px;
+overflow: auto;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+
+
+
+
+<div class="dropdown">
+<button onclick="dropdown_function()" class="dropbtn">Translate to</button>
+<div id="myDropdown" class="dropdown-content">
+
+    <a>Yoruba</a> yo
+  <a onclick="select_language('zu')">Zulu</a> zu
+</div>
+</div>
+
+<header></header> contains the header information of the page- can be used for navigation tab
+<div></div> is a block element
+<span> is an inline element
+<h1> is the most important heading   these are only for structure not for styling
+<h2> is the 2nd most important heading and so on..
+<section></section>
+<article></article>
+we can also use the div tag everywhere instead but these make the code easier to read (semantic elements)
+<ul> is unordered list: only <li> is a list item can be put inside this
+<ol> is ordered list
+
+characters you need to avoid
+less then: &lt;
+greater than &gt;
+AND &amp;
+&nbsp; means new line
+
+Creating links: links that point to internal webpages
+<a href = "same-directory.html" target = "_blank" title = "same dir link"> Linking to a page </a>
+this is both inline as well as block level element
+same-directory.html should be in the same directory
+target: opens the link in a new tab
+
+-->
