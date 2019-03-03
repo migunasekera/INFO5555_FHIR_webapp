@@ -79,173 +79,225 @@ function getGraphs()
               patient_id = r.data.entry[0].resource.id;
               $(plot1).empty()
 
-              time = [2003, 2008, 2013];
+              time = [2007, 2011, 2015, 2019];
 
-              mcv_val = [90.7, 91, 98];
-              gct_val = [15, 25, 30];
-              alt_val = [10, 6, 38];
-              bilirubin_val = [15, 45, 17];
-			  
-			  console.log('This is time', time);
-              console.log('This is mcv_val', mcv_val);
-              console.log('This is gct_val', gct_val);
-              console.log('This is alt_val', alt_val);
-              console.log('This is bilirubin_val', bilirubin_val);
+              hemoglobin = [165, 150, 130, 110]; hemoglobin_1 = [135, 138, 120, 143]; hemoglobin_2 = [162, 150, 120, 100]; hemoglobin_3 = [153, 135, 149, 131];
+              platelet = [150, 200, 250, 300]; platelet_1 = [300, 350, 380, 500]; platelet_2 = [200, 240, 310, 320]; platelet_3 = [500, 300, 200, 120];
+              rbc = [4.1, 3.8, 3.7, 5.01]; rbc_1 = [5.1, 4.2, 4.1, 3.8]; rbc_2 = [4.65, 4.21, 3.99, 3.7]; rbc_3 = [3.6, 4.2, 4.1, 5.1];
+              wbc = [9.6, 9.2, 4.2, 3.1]; wbc_1 = [5.52, 5.67, 4.2, 2.1]; wbc_2 = [3.4, 5.1, 2.1, 6.7]; wbc_3 = [3.5, 5.6, 4.2, 7.5];
 
-              // MCV plot
+              console.log('This is time', time);
+              console.log('This is hemoglobin', hemoglobin);
+              console.log('This is platelet', platelet);
+              console.log('This is rbc', rbc);
+              console.log('This is wbc', wbc);
+
+              // Hemoglobin Plot
               var recorded_values =
               {
                   x: time,
-                  y: mcv_val,
+                  y: hemoglobin,
                   type: 'scatter',
-                  name: 'patient value'
+                  name: 'Patient ID: 1577780'
               };
 
-              var upper_lim =
+              var recorded_values_1 =
+              {
+                  x: time,
+                  y: hemoglobin_1,
+                  type: 'scatter',
+                  name: 'Patient ID: 1291938'
+              };
+
+              var recorded_values_2 =
+              {
+                  x: time,
+                  y: hemoglobin_2,
+                  type: 'scatter',
+                  name: 'Patient ID: 765583'
+              };
+
+              var recorded_values_3 =
+              {
+                  x: time,
+                  y: hemoglobin_3,
+                  type: 'scatter',
+                  name: 'Patient ID: 1157764'
+              };
+
+              var average =
               {
                x: time,
-               y: [96,96,96],
+               y: [130,130,130,130],
                mode: 'lines',
-               name: 'upper_limit',
+               name: 'average values',
                line: {
                  color: 'rgb(0,0,0)'
                }
               };
 
-              var lower_lim =
-              {
-               x: time,
-               y: [83,83,83], // all the same values - lowest value accept
-               mode: 'lines',
-               name: 'lower_lim',
-               line: {
-                 color: 'rgb(0,0,0)'
-               }
-              };
-
-              var data = [recorded_values, upper_lim, lower_lim];
+              var data = [recorded_values, recorded_values_1,recorded_values_2,recorded_values_3, average];
 
               var layout =
               {
-               title:'MCV values[fL]'
+               title:'Hemoglobin grams/dL'
               };
               Plotly.newPlot("plot1", data, layout);
 
 
-              // GCT plot
+              // Platelet Count plot
               var recorded_values =
               {
                   x: time,
-                  y: gct_val,
+                  y: platelet,
                   type: 'scatter',
-                  name: 'patient value'
+                  name: 'Patient ID: 1577780'
               };
 
-              var upper_lim =
+              var recorded_values_1 =
+              {
+                  x: time,
+                  y: platelet_1,
+                  type: 'scatter',
+                  name: 'Patient ID: 1291938'
+              };
+
+              var recorded_values_2 =
+              {
+                  x: time,
+                  y: platelet_2,
+                  type: 'scatter',
+                  name: 'Patient ID: 765583'
+              };
+
+              var recorded_values_3 =
+              {
+                  x: time,
+                  y: platelet_3,
+                  type: 'scatter',
+                  name: 'Patient ID: 1157764'
+              };
+
+              var average =
               {
                x: time,
-               y: [32,32,32],
+               y: [250,250,250,250],
                mode: 'lines',
-               name: 'upper_limit',
+               name: 'average values',
                line: {
                  color: 'rgb(0,0,0)'
                }
               };
 
-              var lower_lim =
-              {
-               x: time,
-               y: [6,6,6], // all the same values - lowest value accept
-               mode: 'lines',
-               name: 'lower_lim',
-               line: {
-                 color: 'rgb(0,0,0)'
-               }
-              };
-
-              var data = [recorded_values, upper_lim, lower_lim];
+              var data = [recorded_values, recorded_values_1,recorded_values_2,recorded_values_3, average];
 
               var layout =
               {
-               title:'GCT values[iU/L]'
+               title:'Platelet Count billion/L'
               };
               Plotly.newPlot("plot2", data, layout);
 
-              // ALT plot
+              // Red Blood Count plot
               var recorded_values =
               {
                   x: time,
-                  y: alt_val,
+                  y: rbc,
                   type: 'scatter',
-                  name: 'patient value'
+                  name: 'Patient ID: 1577780'
               };
 
-              var upper_lim =
+              var recorded_values_1 =
+              {
+                  x: time,
+                  y: rbc_1,
+                  type: 'scatter',
+                  name: 'Patient ID: 1291938'
+              };
+
+              var recorded_values_2 =
+              {
+                  x: time,
+                  y: rbc_2,
+                  type: 'scatter',
+                  name: 'Patient ID: 765583'
+              };
+
+              var recorded_values_3 =
+              {
+                  x: time,
+                  y: rbc_3,
+                  type: 'scatter',
+                  name: 'Patient ID: 1157764'
+              };
+
+              var average =
               {
                x: time,
-               y: [40,40,40],
+               y: [4.52, 4.52, 4.52, 4.52],
                mode: 'lines',
-               name: 'upper_limit',
+               name: 'average values',
                line: {
                  color: 'rgb(0,0,0)'
                }
               };
 
-              var lower_lim =
-              {
-               x: time,
-               y: [5,5,5], // all the same values - lowest value accept
-               mode: 'lines',
-               name: 'lower_lim',
-               line: {
-                 color: 'rgb(0,0,0)'
-               }
-              };
-
-              var data = [recorded_values, upper_lim, lower_lim];
+              var data = [recorded_values, recorded_values_1,recorded_values_2,recorded_values_3, average];
 
               var layout =
               {
-               title:'ALT values[iU/L]'
+               title:'Red Blood Count trillion cells/L'
               };
               Plotly.newPlot("plot3", data, layout);
 
-              // Bilirubin plot
+              // White Blood Count plot
               var recorded_values =
               {
                   x: time,
-                  y: alt_val,
+                  y: wbc,
                   type: 'scatter',
-                  name: 'patient value'
+                  name: 'Patient ID: 1577780'
               };
 
-              var upper_lim =
+              var recorded_values_1 =
+              {
+                  x: time,
+                  y: wbc_1,
+                  type: 'scatter',
+                  name: 'Patient ID: 1291938'
+              };
+
+              var recorded_values_2 =
+              {
+                  x: time,
+                  y: wbc_2,
+                  type: 'scatter',
+                  name: 'Patient ID: 765583'
+              };
+
+              var recorded_values_3 =
+              {
+                  x: time,
+                  y: wbc_3,
+                  type: 'scatter',
+                  name: 'Patient ID: 1157764'
+              };
+
+              var average =
               {
                x: time,
-               y: [70,70,70],
+               y: [7,7,7,7],
                mode: 'lines',
-               name: 'upper_limit',
+               name: 'average values',
                line: {
                  color: 'rgb(0,0,0)'
                }
               };
 
-              var lower_lim =
-              {
-               x: time,
-               y: [0,0,0], // all the same values - lowest value accept
-               mode: 'lines',
-               name: 'lower_lim',
-               line: {
-                 color: 'rgb(0,0,0)'
-               }
-              };
-
-              var data = [recorded_values, upper_lim, lower_lim];
+              var data = [recorded_values, recorded_values_1,recorded_values_2,recorded_values_3, average];
 
               var layout =
               {
-               title:'Bilirubin values[micromol/L]'
+               title:'White Blood Cell Count billion cells/L'
               };
               Plotly.newPlot("plot4", data, layout);
           }
