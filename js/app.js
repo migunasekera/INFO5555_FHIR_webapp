@@ -1,28 +1,80 @@
 var smart = FHIR.client(config);
 
+
 function getGraphs()
 {
-    var fname = document.getElementById("fname").value;
-    var lname = document.getElementById("lname").value;
+    var code = document.getElementById("code").value;
+    //var bs = document.getElementById("bodysite").value;
+	//var g = document.getElementById("gender").value;
 
-    var name =
+    
+	
+	
+	/*var name =
     {
         type: "Patient",
         query: {
             given: fname,
-            family: lname
+            family: lname,
+			//gender: g
         }
     };
+	*/
+	
+	 var cond =
+	{
+		type: "Condition",
+		query: {
+			code: code,
+			//body-site: bs
+		}
+			
+	}; 
+	
+	
 
-    smart.api.search(name).then(
+    smart.api.search(cond).then(
       function(r)
         {
             // if (typeof(r.data.entry) != "undefined")
             // {
-            //     //This is your HTML Output
 
-              $("patient_info").empty();
-              document.getElementById("patient_info").innerHTML = '<h2> Patient Info</h2>'+'<p>'+'<b>'+'Gender: '+'</b>'+r.data.entry[0].resource.gender+'</p>'+'<p>'+'<b>'+'Birthday: '+'</b>'+r.data.entry[0].resource.birthDate+'</p>'+'<p>'+'<b>';
+          var thing = ['apple','banana','mango']
+          
+          //console.log(smart.length)
+          //var patients = r.data.entry;
+          var patients = r.data.entry; // array of patients
+          //var references = patients.resource.subject.reference; // patients identifier
+
+          for(i = 0;i<patients.length;i++){
+            var reference = patients[i].resource.subject.reference;
+            var hello = FHIR.client({
+              serviceUrl: 'https://r3.smarthealthit.org',
+              patientId: reference
+            }
+            );
+            hello.patient.api.read()
+
+          }
+
+
+
+
+
+        
+
+
+              
+			  //console.log(r)
+        console.log(r.data)
+        
+        
+			  //console.log(r.data.entry[0].resource.gender)
+        $("patient_info").empty();
+              //document.getElementById('patient_info').innerHTML = '<h2> Patient Info</h2>' +'<b>' +'<\b>' + 
+        //document.getElementById("patient_info").innerHTML = '<h2> Patient Info</h2>'+'<p>'+'<b>'+'Gender: '+'</b>'+r.data.entry[0].resource.gender+'</p>'+'<p>'+'<b>'+'Birthday: '+'</b>'+r.data.entry[0].resource.birthDate+'</p>'+'<p>'+'<b>';
+              
+              
 
               patient_id = r.data.entry[0].resource.id;
               $(plot1).empty()
@@ -33,8 +85,8 @@ function getGraphs()
               gct_val = [15, 25, 30];
               alt_val = [10, 6, 38];
               bilirubin_val = [15, 45, 17];
-
-              console.log('This is time', time);
+			  
+			  console.log('This is time', time);
               console.log('This is mcv_val', mcv_val);
               console.log('This is gct_val', gct_val);
               console.log('This is alt_val', alt_val);
